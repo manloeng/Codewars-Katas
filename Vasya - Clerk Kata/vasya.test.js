@@ -34,19 +34,43 @@ describe("sellTickets", () => {
     expect(sales).toBe("No");
   });
 
-  test.only("Expects 'Yes' when there is enough change for everyone", () => {
+  test("Expects 'No' when there is not enough change for a $100 bill", () => {
+    const input = [25, 25, 100];
+    const sales = sellTickets(input);
+    expect(sales).toBe("No");
+  });
+
+  test("Expects 'Yes' when there is enough change for everyone", () => {
+    const input = [25, 50, 25, 100];
+    const sales = sellTickets(input);
+    expect(sales).toBe("Yes");
+  });
+
+  test("Expects 'No' when there is enough change for everyone", () => {
+    const input = [25, 50, 50, 100];
+    const sales = sellTickets(input);
+    expect(sales).toBe("No");
+  });
+
+  test("Expects 'Yes' when there is enough change for everyone", () => {
     const input = [25, 25, 50, 100];
     const sales = sellTickets(input);
     expect(sales).toBe("Yes");
   });
 
-  xtest("Expects 'No' when there is not enough change for a $100 dollar bill", () => {
-    const input = [25, 25, 50, 50, 100];
+  test("Expects 'Yes' when there is enough change for everyone", () => {
+    const input = [25, 25, 25, 100];
     const sales = sellTickets(input);
-    expect(sales).toBe("No");
+    expect(sales).toBe("Yes");
   });
 
-  xtest("Expects 'No' when there is not enough change", () => {
+  test("Expects 'Yes' when there is enough change", () => {
+    const input = [25, 25, 50, 50, 100];
+    const sales = sellTickets(input);
+    expect(sales).toBe("Yes");
+  });
+
+  test("Expects 'No' when there is not enough change", () => {
     const input = [
       25,
       25,
