@@ -1,19 +1,19 @@
 function stripCommentAtMarker(input, markers) {
-  const isInputValid = !input
-  if (isInputValid) return ''
+  returnMessageifBaseValid(input)
+  returnMessageifMarkersValid(input , markers)
 
-  const isMarkerLengthValid = markers.length
-  if (!isMarkerLengthValid) return input
-
-  const newSentenceArray = createNewSentenceArray(input)
-  const regexMarker = createRegexMarker(markers)
-  const newStringArray = createNewStringArray(newSentenceArray, regexMarker)
-
-  const newString = newStringArray.join('\n')
-  return newString
+  return newString(input, markers)
 };
 
 module.exports =  stripCommentAtMarker
+
+function returnMessageifBaseValid (input){
+  if (!input) return ''
+}
+
+function returnMessageifMarkersValid (input, markers){
+  if (!markers.length) return input
+}
 
 function createRegexMarker(markers){
   const markersString =  markers.join('')
@@ -52,4 +52,13 @@ function createNewString(input, regexMarker){
   }
 
   return newStringArray.join(' ').trim()
+}
+
+function newString(input, markers){
+  const newSentenceArray = createNewSentenceArray(input)
+  const regexMarker = createRegexMarker(markers)
+  const newStringArray = createNewStringArray(newSentenceArray, regexMarker)
+
+  const newString = newStringArray.join('\n')
+  return newString
 }
