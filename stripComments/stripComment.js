@@ -4,14 +4,6 @@ function stripCommentAtMarker(input, markers) {
 
 module.exports =  stripCommentAtMarker
 
-function returnMessageifBaseValid (input){
-  if (!input) return ''
-}
-
-function returnMessageifMarkersValid (input, markers){
-  if (!markers.length) return input
-}
-
 function createRegexMarker(markers){
   const markersString =  markers.join('')
   const regexPattern = `[${markersString}]`
@@ -52,13 +44,14 @@ function createNewString(input, regexMarker){
 }
 
 function newString(input, markers){
-  returnMessageifBaseValid(input)
-  returnMessageifMarkersValid(input , markers)
-  
+  if (!input) return ''
+  if (!markers.length) return input
+
   const newSentenceArray = createNewSentenceArray(input)
   const regexMarker = createRegexMarker(markers)
   const newStringArray = createNewStringArray(newSentenceArray, regexMarker)
 
   const newString = newStringArray.join('\n')
+
   return newString
 }
