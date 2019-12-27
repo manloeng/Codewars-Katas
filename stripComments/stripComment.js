@@ -1,7 +1,4 @@
 function stripCommentAtMarker(input, markers) {
-  returnMessageifBaseValid(input)
-  returnMessageifMarkersValid(input , markers)
-
   return newString(input, markers)
 };
 
@@ -55,6 +52,9 @@ function createNewString(input, regexMarker){
 }
 
 function newString(input, markers){
+  returnMessageifBaseValid(input)
+  returnMessageifMarkersValid(input , markers)
+  
   const newSentenceArray = createNewSentenceArray(input)
   const regexMarker = createRegexMarker(markers)
   const newStringArray = createNewStringArray(newSentenceArray, regexMarker)
