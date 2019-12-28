@@ -43,7 +43,7 @@ describe("anagrams", () => {
     const result = anagrams(anagram, words);
     expect(result).toEqual(["aabb", "abab", "baab", "baba", "bbaa"]);
   });
-  test.only("will return an array containing the variations of the 2 letter anagram when passed with an anagram and the invalid words", () => {
+  test("will return an array containing the variations of the 2 letter anagram when passed with an anagram and the invalid words", () => {
     const anagram = "ab";
     const words = [ 'aa', 'ab', 'ba', 'bb' ];
     const result = anagrams(anagram, words);
